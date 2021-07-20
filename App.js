@@ -96,7 +96,7 @@ const App = () => {
          marginHorizontal:16,
          marginVertical: 10,
          borderRadius: 20,
-         flex:1,
+    
          alignItems:'center',justifyContent:'center',
          flexDirection:'row'
       }}>
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     justifyContent:'flex-start'
   },
   item: {
-    width:180,
+    width:140,
     paddingLeft: 15,
     paddingTop:15,
     marginVertical: 8,

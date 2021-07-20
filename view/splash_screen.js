@@ -2,13 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { LogBox, StyleSheet, Text, View } from 'react-native';
 import {Image} from 'react-native';
-import {ImageBackground} from 'react-native';
 import { Path } from 'react-native-svg';
 import Svg from 'react-native-svg';
-export const icon = require("./Image/Logo.jpg");
-export const iconSplash = require("./Image/splash.png");
-export const iconSplash2 = require("./Image/splash2.png");
-export default function App() {
+export const icon = require("../Image/Logo.jpg");
+export const iconSplash = require("../Image/splash.png");
+export const iconSplash2 = require("../Image/splash2.png");
+export default function splash_screen() {
   return (
     <View style={styles.customViewAll}>
       <View style={styles.customView1}>

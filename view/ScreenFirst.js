@@ -149,10 +149,10 @@ const ScreenFirst = () => {
                       🍎Fruit                   🥦Vegetables
           </Text>
           <View style={{
-            flexDirection:'row',height:5,marginTop:10,
+            flexDirection:'row',height:10,marginTop:10,
             marginHorizontal:16,backgroundColor:'#0ed145',borderRadius:20
           }}>
-            <View style={{flex: 3, backgroundColor:'#ec1c24',borderRadius:20}}></View>
+            <View style={{flex: 3, backgroundColor:'#e25241',borderRadius:20}}></View>
             <View style={{flex: 1, backgroundColor:'#0ed145',borderTopRightRadius:20, borderBottomRightRadius:20}}></View>
           </View>
         </View>

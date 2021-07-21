@@ -3,23 +3,23 @@ import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, 
 export const iconSplash = require("../Image/splash.png");
 export const background = require("../Image/drug_background.jpg");
 
-const Medicines = () => {
+const MedicinesItem = () => {
 
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.backgroundCustom}>
-        
         </View>
         <View style={{
             flex:1,
             justifyContent:'flex-start'
         }}>
-        
         </View>
+
+
         <View style={{
             flex:1,
             position:'absolute',
-            top:0, bottom: 0, left:0, right:0,        }}>
+            top:0, bottom: 0, left:0, right:0,}}>
 
         </View>
       
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Medicines;
+export default MedicinesItem;

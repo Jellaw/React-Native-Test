@@ -22,7 +22,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-      initialRouteName="MedicinesItem"
+      initialRouteName="ProductsList"
       screenOptions ={{headerShown: false}}>
         <Stack.Screen name="Splash" component={splash_screen} />
         <Stack.Screen name="First" component={ScreenFirst} />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, Image, View, TextInput } from "react-native";
+import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, Image, View, TextInput, ImageBackground } from "react-native";
 export const iconSplash = require("../Image/splash.png");
+export const background = require("../Image/drug_background.jpg");
 const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -18,7 +19,20 @@ const DATA = [
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
     title: "Medicines and Products",
     color:"#67c8d7",
-    colorClicked:'#584cde'
+    colorClicked:'#fff200'
+  },
+];
+
+const DATATOPDOC = [
+  {
+    id: "#01",
+    title: "Pregnancy of Periods Doubts",
+    name: "Gynaecology",
+  },
+  {
+    id: "#02",
+    title: "Acne, Pimple bla bla skin issues?",
+    name:"Dermatology",
   },
 ];
 
@@ -34,6 +48,20 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
   </TouchableOpacity>
   
 );
+const ItemChatDoc = ({ item, onPress }) => (
+  <TouchableOpacity onPress={onPress} >
+    <ImageBackground 
+      source={background}
+      resizeMode='cover'
+      imageStyle={{ borderRadius: 20}}
+      style={styles.imageBackground}>   
+      <Text style={[styles.idChatDoc]}>{item.id}</Text>
+      <Text style={[styles.titleChatDoc]}>{item.title}</Text>
+      <Text style={[styles.nameChatDoc]}>{item.name}</Text>
+    </ImageBackground>
+</TouchableOpacity>
+
+);
 
 const ScreenFirst = () => {
   const [selectedId, setSelectedId] = useState(null);
@@ -41,13 +69,22 @@ const ScreenFirst = () => {
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? item.colorClicked : item.color;
     const color = item.id === selectedId ? 'black' : 'white';
-  
     return (
       <Item
         item={item}
         onPress={() => setSelectedId(item.id)}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
+      />
+    );
+  };
+
+
+  const renderItemDoc = ({ item }) => {
+    return (
+      <ItemChatDoc
+        item={item}
+        onPress={() => setSelectedId(item.id)}
       />
     );
   };
@@ -112,11 +149,11 @@ const ScreenFirst = () => {
                       🍎Fruit                   🥦Vegetables
           </Text>
           <View style={{
-            flexDirection:'row', borderRadius:10,height:5,marginTop:10,
-            marginHorizontal:16,
+            flexDirection:'row',height:5,marginTop:10,
+            marginHorizontal:16,backgroundColor:'#0ed145',borderRadius:20
           }}>
-            <View style={{flex: 3, backgroundColor:'#ec1c24'}}></View>
-            <View style={{flex: 1, backgroundColor:'#0ed145'}}></View>
+            <View style={{flex: 3, backgroundColor:'#ec1c24',borderRadius:20}}></View>
+            <View style={{flex: 1, backgroundColor:'#0ed145',borderTopRightRadius:20, borderBottomRightRadius:20}}></View>
           </View>
         </View>
         <View style={{flex:0.01,height:'60%', backgroundColor:'#f4f4f6'}}>
@@ -134,18 +171,16 @@ const ScreenFirst = () => {
                     justifyContent: 'center',}}>
           Chat with Top Doctors</Text>
 
-      <View style={{
-         backgroundColor: '#fff',
-         padding: 10,
-         marginVertical:8,
-         marginHorizontal:16,
-         marginVertical: 10,
-         flex:1,
-         borderRadius: 20,
-         flexDirection:'row'
-      }}>
-
-      </View>
+      <FlatList
+        data={DATATOPDOC}
+        horizontal
+        renderItem={renderItemDoc}
+        keyExtractor={(item) => item.id}
+        extraData={selectedId}
+        style={{flex:3,}}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      />
     
     </SafeAreaView>
   );
@@ -170,12 +205,48 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius:10,
     borderBottomRightRadius:10,
   },
+  itemChatDoc: {
+    alignItems:'center',justifyContent:'center',
+    width:250,
+    padding:10,
+    alignItems:'flex-start',
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius:20
+  },
   title: {
     fontSize: 17,
     width:'65%',
     alignItems: 'center',
     shadowColor: '#111',
     color:'#fff',
+    justifyContent: 'center',
+  },
+  idChatDoc: {
+    fontSize: 17,
+    width:'65%',
+    alignItems: 'center',
+    shadowColor: '#111',
+    fontWeight:'bold',
+    color:'#e15748',
+    justifyContent: 'center',
+  },
+  titleChatDoc: {
+    fontSize: 20,
+    width:'65%',
+    fontWeight:'bold',
+    alignItems: 'center',
+    shadowColor: '#111',
+    marginVertical: 8,
+    color:'#111',
+    justifyContent: 'center',
+  },
+  nameChatDoc: {
+    fontSize: 17,
+    width:'70%',
+    alignItems: 'center',
+    shadowColor: '#111',
+    color:'#948fac',
     justifyContent: 'center',
   },
   titleScreen: {
@@ -228,6 +299,15 @@ const styles = StyleSheet.create({
     bottom:0,
     right:0,
     marginRight:-15,
+    },
+    imageBackground: {
+    alignItems:'center',justifyContent:'center',
+    padding:10,
+    alignItems:'flex-start',
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius:20,
+    flex: 1,
     },
 });
 

@@ -153,7 +153,7 @@ const ScreenFirst = () => {
             marginHorizontal:16,backgroundColor:'#0ed145',borderRadius:20
           }}>
             <View style={{flex: 3, backgroundColor:'#e25241',borderRadius:20}}></View>
-            <View style={{flex: 1, backgroundColor:'#0ed145',borderTopRightRadius:20, borderBottomRightRadius:20}}></View>
+            <View style={{flex: 1, backgroundColor:'#97c05c',borderTopRightRadius:20, borderBottomRightRadius:20}}></View>
           </View>
         </View>
         <View style={{flex:0.01,height:'60%', backgroundColor:'#f4f4f6'}}>

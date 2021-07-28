@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, Image, View, TextInput, ImageBackground } from "react-native";
+import { useNavigation } from "@react-navigation/native"
 export const drug1 = require("../Image/drug1.png");
 export const drug2 = require("../Image/drug2.png");
 export const drug3 = require("../Image/drug3.png");
@@ -74,7 +75,7 @@ const Item = ({ item, onPress }) => (
 
 const ProductsList = () => {
   const [selectedId, setSelectedId] = useState(null);
-
+  const navigation = useNavigation()
   const renderItem = ({ item }) => {
     return (
       <View style={{
@@ -83,10 +84,9 @@ const ProductsList = () => {
       }}>
         <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={() => {setSelectedId(item.id),navigation.navigate("MedicinesItem")}}
       />
       </View>
-    
     );
   };
 
@@ -118,12 +118,10 @@ const ProductsList = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor:'#f4f5f9',
     flexDirection:'column',
-    marginVertical:8,
-    marginHorizontal:16,
-    justifyContent:'flex-start'
+    paddingHorizontal:16
+,    justifyContent:'flex-start'
   },
   flatListCustom: {
     marginVertical:8,

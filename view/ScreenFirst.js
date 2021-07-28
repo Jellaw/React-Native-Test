@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native"
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, Image, View, TextInput, ImageBackground } from "react-native";
 export const iconSplash = require("../Image/splash.png");
 export const background = require("../Image/drug_background.jpg");
@@ -62,17 +63,25 @@ const ItemChatDoc = ({ item, onPress }) => (
 </TouchableOpacity>
 
 );
-
 const ScreenFirst = () => {
   const [selectedId, setSelectedId] = useState(null);
-
+  const navigation = useNavigation()
+  // function idCompare(str1, str2){
+  //   return str1===str2;
+  // }
+  // function handleSelect (item) {
+  //   let idMedicineItem = "58694a0f-3da1-471f-bd96-145571e29d72"
+  //   if(idCompare(item.id,idMedicineItem)){
+  //        navigation.navigate("ProductsList")
+  //     }
+  // }
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? item.colorClicked : item.color;
     const color = item.id === selectedId ? 'black' : 'white';
     return (
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={() => {setSelectedId(item.id), navigation.navigate("ProductsList")}}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
       />
@@ -111,7 +120,6 @@ const ScreenFirst = () => {
         />
       </View>
       <Text style={{fontSize: 18,
-                    marginVertical:8,
                     marginHorizontal:16,
                     alignItems: 'center',
                     justifyContent: 'center',}}>
@@ -189,7 +197,6 @@ const ScreenFirst = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor:'#f4f5f9',
     flexDirection:'column',
     justifyContent:'flex-start'
@@ -252,7 +259,7 @@ const styles = StyleSheet.create({
   titleScreen: {
     fontSize: 30,
     width:'60%',
-    marginVertical:8,
+    marginTop:8,
     marginHorizontal:16,
     alignItems: 'center',
     justifyContent: 'center',

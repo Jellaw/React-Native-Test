@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, StatusBar, StyleSheet, Text, TouchableHighlight, Image, View } from "react-native";
 export const drug1 = require("../Image/drug1.png");
-
-const MedicinesItem = () => {
-
+export const drug2 = require("../Image/drug2.png");
+const MedicinesItem = ({navigation,route}) => {
+  const [item,setItem]=useState(route.params);
+  useEffect(()=>{
+    console.log(item)
+  })
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.backgroundCustom}>
@@ -13,8 +16,7 @@ const MedicinesItem = () => {
             justifyContent:'flex-start'
         }}>
         </View>
-
-
+        
         <View style={{
             flex:1,
             position:'absolute',
@@ -26,11 +28,14 @@ const MedicinesItem = () => {
                   alignItems:'flex-end',
                   justifyContent:'center'
                 }}>
-                  <Image
-                    source={drug1}
-                    style = {{width:100,height:'100%',alignItems:'center',marginVertical:8,position:'absolute',bottom:-55}}
-                        resizeMode='center'
-                  ></Image>
+                   
+                    <Image
+                      source={item.image}
+                      style = {{width:100,height:'100%',alignItems:'center',marginVertical:8,position:'absolute',bottom:-55}}
+                      resizeMode='center'
+                    ></Image>
+        
+            
                 </View>
                 <View style={{
                   flex:6,

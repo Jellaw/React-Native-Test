@@ -84,7 +84,9 @@ const ProductsList = () => {
       }}>
         <Item
         item={item}
-        onPress={() => {setSelectedId(item.id),navigation.navigate("MedicinesItem")}}
+        onPress={() => {setSelectedId(item.id),navigation.navigate("MedicinesItem",item
+        );
+      }}
       />
       </View>
     );
